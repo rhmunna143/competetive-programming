@@ -12,7 +12,7 @@
 int main()
 {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    char STRING[12500];
+    char STRING[100005];
     scanf("%s", STRING);
 
     // replace "," with " " and "a" with "A", and "z" with "Z" "A" with "a", and "Z" with "z"
@@ -54,3 +54,5 @@ int main()
  *
  * Copyright (c) All rights reserved.
  */
+
+// char = 1 byte = 8 bits
