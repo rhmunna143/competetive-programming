@@ -1,15 +1,7 @@
 /***
  * TODO:
  * Algorithm | Pseudo-code | Steps -- Write here
- * 
- * Context: 
- * 
  * 1. 
- * 
- * Note:
- * 
- * Constrains:
- * 
  */
 
 #include <stdio.h>
