@@ -27,7 +27,7 @@ int main()
 /***
  * Author:
  * Md Rabbi Haque Munna
- * BSc. Engr. in Computer Science, CSE
+ * BSc. [Engg.] in Computer Science and Engineering, [CSE]
  * Rabindra Maitree University, RMU
  * Batch: 2022-02
  * Kushtia, Bangladesh
@@ -37,7 +37,7 @@ int main()
  * LinkedIn: https://www.linkedin.com/in/rhmunna143
  * GitHub: https://github.com/rhmunna143
  * Portfolio: https://munna-dev.web.app
- * Facebook: https://www.facebook.com/Munna.RMU
+ * Facebook Profile: https://www.facebook.com/Munna.RMU
  *
  * Copyright (c) All rights reserved.
  */
