@@ -9,6 +9,7 @@
         "Momo's"
     ],
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string.h": "c"
     }
 }
