@@ -1,13 +1,13 @@
 /***
  * Context:
  *
- * 
+ *
  * Constrains:
  *
- * 
+ *
  * Note:
  *
- * 
+ *
  * TODO:
  * Algorithm | Pseudo-code | Steps -- Write here
  *
@@ -15,13 +15,32 @@
  *
  */
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    
+    int N;
+    cin >> N;
+
+    // Declare an array of size N. dynamic memory allocation for array
+    int *ARRAY = new int[N];
+
+    // Read N integers from STDIN and store them in the array
+    for (int i = 0; i < N; i++)
+    {
+        cin >> ARRAY[i];
+    }
+
+    // Print the array in reverse order and separate the elements by space
+    for (int i = N - 1; i >= 0; i--)
+    {
+        cout << ARRAY[i] << " ";
+    }
+
+    // Free the memory allocated for the array
+    delete[] ARRAY;
 
     return 0;
 }
