@@ -2,7 +2,9 @@
     "C_Cpp.errorSquiggles": "disabled",
     "cSpell.words": [
         "Abul",
+        "Amena",
         "Bablu",
+        "ekmnoy",
         "Fuchka",
         "Jadu",
         "Kacchi",
@@ -14,6 +16,8 @@
     ],
     "files.associations": {
         "iostream": "cpp",
-        "string.h": "c"
+        "string.h": "c",
+        "new": "cpp",
+        "istream": "cpp"
     }
 }
