@@ -19,6 +19,7 @@
         "iostream": "cpp",
         "string.h": "c",
         "new": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "iosfwd": "cpp"
     }
 }
