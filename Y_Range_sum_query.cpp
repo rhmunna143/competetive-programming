@@ -1,8 +1,7 @@
 /***
- * Objective:
+ * Objective: learning about data structure
  * 
- * Context:
- *
+ * Context: Given 2 numbers N and Q, an array A of N number and Q number of pairs L , R. For each query Q print a single line that contains the summation of all numbers from index L to index R.
  * 
  * Constrains:
  *

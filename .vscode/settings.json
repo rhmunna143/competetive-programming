@@ -22,5 +22,6 @@
         "new": "cpp",
         "istream": "cpp",
         "iosfwd": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\g++.exe"
 }
