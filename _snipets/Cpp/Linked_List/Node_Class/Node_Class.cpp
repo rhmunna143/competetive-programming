@@ -9,6 +9,6 @@ public:
         this->value = value;
         this->next = NULL;
     }
-}
+};
 
 // shortcut: cppnode (cpp node)
