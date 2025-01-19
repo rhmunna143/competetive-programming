@@ -1,123 +1,137 @@
 #include <iostream>
-#include <vector>
 #include <queue>
-
+#include <vector>
 using namespace std;
 
-// Definition of TreeNode
-struct TreeNode
+class Node
 {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+public:
+  int data;
+  Node *left;
+  Node *right;
+
+  Node(int val)
+  {
+    data = val;
+    left = NULL;
+    right = NULL;
+  }
 };
 
-// Function to build the tree from level order input
-TreeNode *buildTree(const vector<int> &levelOrder)
+Node *input_binary_tree()
 {
-  if (levelOrder.empty() || levelOrder[0] == -1)
-    return nullptr;
+  int val;
+  cin >> val;
+  if (val == -1)
+    return NULL;
 
-  TreeNode *root = new TreeNode(levelOrder[0]);
-  queue<TreeNode *> q;
+  Node *root = new Node(val);
+  queue<Node *> q;
   q.push(root);
-  size_t i = 1;
 
-  while (!q.empty() && i < levelOrder.size())
+  while (!q.empty())
   {
-    TreeNode *current = q.front();
+    Node *current = q.front();
     q.pop();
 
-    if (levelOrder[i] != -1)
+    int leftVal, rightVal;
+    cin >> leftVal;
+    if (leftVal != -1)
     {
-      current->left = new TreeNode(levelOrder[i]);
+      current->left = new Node(leftVal);
       q.push(current->left);
     }
-    i++;
 
-    if (i < levelOrder.size() && levelOrder[i] != -1)
+    cin >> rightVal;
+    if (rightVal != -1)
     {
-      current->right = new TreeNode(levelOrder[i]);
+      current->right = new Node(rightVal);
       q.push(current->right);
     }
-    i++;
   }
 
   return root;
 }
 
-// Function to get the left boundary (excluding leaves)
-void getLeftBoundary(TreeNode *node, vector<int> &result)
+void get_left_boundary(Node *root, vector<int> &boundary)
 {
-  while (node)
+  Node *current = root;
+  while (current)
   {
-    if (node->left || node->right)
-      result.push_back(node->val);
-    if (node->left)
-      node = node->left;
+    if (current->left || current->right)
+    {
+      boundary.push_back(current->data);
+    }
+    if (current->left)
+    {
+      current = current->left;
+    }
     else
-      node = node->right;
+    {
+      current = current->right;
+    }
   }
 }
 
-// Function to get all leaf nodes
-void getLeaves(TreeNode *node, vector<int> &result)
-{
-  if (!node)
-    return;
-  if (!node->left && !node->right)
-  {
-    result.push_back(node->val);
-    return;
-  }
-  getLeaves(node->left, result);
-  getLeaves(node->right, result);
-}
-
-// Function to get the right boundary (excluding leaves)
-void getRightBoundary(TreeNode *node, vector<int> &result)
+void get_right_boundary(Node *root, vector<int> &boundary)
 {
   vector<int> temp;
-  while (node)
+  Node *current = root;
+  while (current)
   {
-    if (node->left || node->right)
-      temp.push_back(node->val);
-    if (node->right)
-      node = node->right;
+    if (current->left || current->right)
+    {
+      temp.push_back(current->data);
+    }
+    if (current->right)
+    {
+      current = current->right;
+    }
     else
-      node = node->left;
+    {
+      current = current->left;
+    }
   }
-  // Reverse and add to result
   for (auto it = temp.rbegin(); it != temp.rend(); ++it)
   {
-    result.push_back(*it);
+    boundary.push_back(*it);
   }
 }
 
-// Function to print the outer boundary of the tree
-vector<int> printOuterTree(const vector<int> &levelOrder)
+void get_leaves(Node *root, vector<int> &boundary)
 {
-  TreeNode *root = buildTree(levelOrder);
-  vector<int> result;
   if (!root)
-    return result;
-
-  if (root->left || root->right)
-    result.push_back(root->val); // Root is part of the boundary if it's not a single leaf
-
-  getLeftBoundary(root->left, result);
-  getLeaves(root, result);
-  getRightBoundary(root->right, result);
-
-  return result;
+    return;
+  get_leaves(root->left, boundary);
+  if (!root->left && !root->right)
+  {
+    boundary.push_back(root->data);
+  }
+  get_leaves(root->right, boundary);
 }
 
-// Main function to test the implementation
+vector<int> print_outer_nodes(Node *root)
+{
+  vector<int> boundary;
+  if (!root)
+    return boundary;
+
+  if (root->left || root->right)
+  {
+    boundary.push_back(root->data);
+  }
+
+  get_left_boundary(root->left, boundary);
+  get_leaves(root, boundary);
+  get_right_boundary(root->right, boundary);
+
+  return boundary;
+}
+
 int main()
 {
-  vector<int> levelOrder = {10, 20, 30, 40, 70, -1, 50, 90, 110, -1, -1, 80, 60, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1};
-  vector<int> result = printOuterTree(levelOrder);
+  Node *root = input_binary_tree();
+  vector<int> result = print_outer_nodes(root);
 
   for (int val : result)
   {
