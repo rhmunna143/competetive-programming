@@ -21,49 +21,92 @@
  *
  */
 
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int main()
+// {
+//     int T;
+//     cin >> T;
+//     cin.ignore(); // To consume the newline after T
+
+//     while (T--)
+//     {
+//         string S;
+//         getline(cin, S); // Read the entire line of the sentence
+
+//         map<string, int> wordCount;
+//         stringstream ss(S);
+//         string word;
+
+//         // Count the frequency of each word
+//         while (ss >> word)
+//         {
+//             wordCount[word]++;
+//         }
+
+//         int maxCount = 0;
+//         string maxWord;
+
+//         // Find the word with the highest frequency
+//         for (const auto &entry : wordCount)
+//         {
+//             if (entry.second > maxCount)
+//             {
+//                 maxCount = entry.second;
+//                 maxWord = entry.first;
+//             }
+//         }
+
+//         // Print the word with its count
+//         cout << maxWord << " " << maxCount << endl;
+//     }
+
+//     return 0;
+// }
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    int T;
+int main() {
+    int T; // Number of test cases
     cin >> T;
     cin.ignore(); // To consume the newline after T
 
-    while (T--)
-    {
+    while (T--) {
         string S;
-        getline(cin, S); // Read the entire line of the sentence
+        getline(cin, S); // Read the entire sentence
 
         map<string, int> wordCount;
         stringstream ss(S);
         string word;
 
-        // Count the frequency of each word
-        while (ss >> word)
-        {
+        // Count occurrences of each word
+        while (ss >> word) {
             wordCount[word]++;
         }
 
         int maxCount = 0;
         string maxWord;
 
-        // Find the word with the highest frequency
-        for (const auto &entry : wordCount)
-        {
-            if (entry.second > maxCount)
-            {
+        // Determine the word with the maximum count
+        for (const auto& entry : wordCount) {
+            if (entry.second > maxCount) {
                 maxCount = entry.second;
                 maxWord = entry.first;
             }
         }
 
-        // Print the word with its count
+        // Output the result for the current test case
         cout << maxWord << " " << maxCount << endl;
     }
 
     return 0;
 }
+
+
+
 
 /***
  * Author:
