@@ -1,15 +1,15 @@
 /***
  * Objective:
- * 
+ *
  * Context:
  *
- * 
+ *
  * Constrains:
  *
- * 
+ *
  * Note:
  *
- * 
+ *
  * TODO:
  * Algorithm | Pseudo-code | Steps -- Write here
  *
@@ -17,42 +17,52 @@
  *
  */
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+
 vector<int> adj_list[1005];
 bool vis[1005];
+
 void bfs(int src)
 {
     queue<int> q;
     q.push(src);
-    vis[src]=true;
-    while(!q.empty())
+    vis[src] = true;
+    while (!q.empty())
     {
-        int par=q.front();
+        int par = q.front();
         q.pop();
-        cout<<par<<" ";
-        for(auto child:adj_list[par])
+        cout << par << " ";
+        for (auto child : adj_list[par])
         {
-            if(!vis[child])
+            if (!vis[child])
             {
                 q.push(child);
-                vis[child]=true;
+                vis[child] = true;
             }
         }
     }
 }
+
+// BFS - Breadth First Search
+
 int main()
 {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    int n,e;
-    cin>>n>>e;
-    while(e--)
+    int n, e;
+    cin >> n >> e;
+
+    while (e--)
     {
-        int a,b;
-        cin>>a>>b;
+        int a, b;
+        cin >> a >> b;
+
         adj_list[a].push_back(b);
         adj_list[b].push_back(a);
     }
+
+    // GRI - Graph Representation Input
+
     bfs(0);
 
     return 0;

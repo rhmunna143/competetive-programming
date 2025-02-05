@@ -1,15 +1,15 @@
 /***
  * Objective:
- * 
+ *
  * Context:
  *
- * 
+ *
  * Constrains:
  *
- * 
+ *
  * Note:
  *
- * 
+ *
  * TODO:
  * Algorithm | Pseudo-code | Steps -- Write here
  *
@@ -17,28 +17,40 @@
  *
  */
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    int n,e;
-    cin>>n>>e;
-    vector<pair<int,int>> edge_list;
-    while(e--)
+    int n, e;
+
+    cin >> n >> e;
+
+    vector<int> adj_list[n];
+
+    while (e--)
     {
-        int a,b;
-        cin>>a>>b;
-        edge_list.push_back({a,b});
+        int a, b;
+        cin >> a >> b;
+        adj_list[a].push_back(b);
+        adj_list[b].push_back(a);
     }
-    for(auto p:edge_list)
+
+    for (int i = 0; i < n; i++)
     {
-        cout<<p.first<<" "<<p.second<<endl;
+        cout << i << " -> ";
+        for (auto x : adj_list[i])
+        {
+            cout << x << " ";
+        }
+        cout << endl;
     }
 
     return 0;
 }
+
+// ADL - Adjacency List
 
 /***
  * Author:

@@ -22,9 +22,11 @@ int main()
     {
         int a, b;
         cin >> a >> b;
+
         adj_list[a].push_back(b);
         adj_list[b].push_back(a);
     }
+
     memset(vis, false, sizeof(vis));
     dfs(0);
 
