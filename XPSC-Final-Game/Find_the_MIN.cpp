@@ -1,20 +1,14 @@
 /***
- * Objective:
- *
+ * Objective: Find and remove minimum elements efficiently
+ * 
  * Context:
- *
- *
- * Constrains:
- *
- *
- * Note:
- *
- *
- * TODO:
- * Algorithm | Pseudo-code | Steps -- Write here
- *
- * 1.
- *
+ * - Two types of queries:
+ *   1. Add element X to the array
+ *   2. Find minimum value, print it, and remove all occurrences
+ * 
+ * Approach:
+ * - Add elements without maintaining sorted order O(1)
+ * - Sort only when needed for minimum finding
  */
 
 #include <bits/stdc++.h>
@@ -22,7 +16,6 @@ using namespace std;
 
 int main()
 {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
@@ -30,6 +23,8 @@ int main()
     cin >> q;
 
     vector<int> a;
+    a.reserve(q);
+    bool need_sort = false;
 
     while (q--)
     {
@@ -40,9 +35,12 @@ int main()
         {
             int x;
             cin >> x;
+            
+            // Simply append to end (O(1)) instead of sorted insertion (O(n))
             a.push_back(x);
+            need_sort = true;
         }
-        else if (t == 2) // find and remove min
+        else if (t == 2)
         {
             if (a.empty())
             {
@@ -50,52 +48,23 @@ int main()
             }
             else
             {
-                int min = a[0];
-
-                for (int i = 1; i < a.size(); i++)
+                // Sort only when needed
+                if (need_sort)
                 {
-                    if (a[i] < min)
-                    {
-                        min = a[i];
-                    }
+                    sort(a.begin(), a.end());
+                    need_sort = false;
                 }
-
-                cout << min << "\n";
-
-                // remove the min element from the vector
-                vector<int> new_a;
-
-                for (int i = 0; i < a.size(); i++)
-                {
-                    if (a[i] != min)
-                    {
-                        new_a.push_back(a[i]);
-                    }
-                }
-
-                // update the vector
-                a = new_a;
+                
+                // Min value is at the front of sorted array
+                int min_val = a[0];
+                cout << min_val << "\n";
+                
+                // Remove all occurrences of minimum
+                auto end_min = upper_bound(a.begin(), a.end(), min_val);
+                a.erase(a.begin(), end_min);
             }
         }
     }
 
     return 0;
 }
-
-/***
- * Author:
- * Md Rabbi Haque Munna
- * BSc. [Engg.] in Computer Science and Engineering, [CSE]
- * Rabindra Maitree University, RMU
- * Batch: 2022-02
- * Kushtia, Bangladesh
- *
- * Email: rhmunna19@gmail.com
- * WhatsApp: +8801877-255595
- * LinkedIn: https://www.linkedin.com/in/rhmunna143
- * GitHub: https://github.com/rhmunna143
- * Portfolio: https://munna-dev.web.app
- * Facebook Profile: https://www.facebook.com/Munna.RMU
- *
- * Copyright (c) All rights reserved.
- */
